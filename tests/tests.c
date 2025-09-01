@@ -1,11 +1,18 @@
 #include <stdio.h>
+#define FELIZ 0
+#define TRISTE 1
+void ser_feliz(int* estado);
+void print_estado(int estado);
 
-int main(){
-    char s[] = "Hola!"; // s es el nombre del array
-    char *u = "string"; // u es un puntero a un char
-    
-    printf("s = %s\n", s);
-    printf("u = %s\n", u);
-    s[0] = 'h'; // s = "hola!"
-    u[0] = 'S'; // ERROR
+int main() {
+    int estado = TRISTE; // automatic duration. Block scope
+    ser_feliz(&estado);
+    print_estado(estado); // qu´e imprime?
+}
+
+void ser_feliz(int* estado){
+    *estado = FELIZ;
+}
+void print_estado(int estado){
+    printf("Estoy %s\n", estado == FELIZ ? "feliz" : "triste");
 }
